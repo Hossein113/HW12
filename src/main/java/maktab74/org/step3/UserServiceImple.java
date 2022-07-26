@@ -5,12 +5,12 @@ public class UserServiceImple {
     private UserDAO userDAO ;
     private SecurityService securityService ;
 
-    public String assignPassword (User user){
+    public void assignPassword (User user) throws Exception {
 
-        String passwprdMd5 = securityService.Md5(user.getPassword());
-        user.setPassword(passwprdMd5);
+        String passwordMd5 = securityService.Md5(user.getPassword());
+        user.setPassword(passwordMd5);
         userDAO.updateUser(user);
-return user.getPassword();
+
     }
     public  UserServiceImple (UserDAO dao , SecurityService security){
         this.userDAO=dao;
